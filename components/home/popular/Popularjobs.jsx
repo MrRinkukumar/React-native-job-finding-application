@@ -31,13 +31,13 @@ const Popularjobs = () => {
       <View style={styles.cardsContainer}>
         {isloading ? (
           <ActivityIndicator size={"large"} color={COLORS.primary} />
-        ) : error == null ? (
+        ) : error ? (
           <Text>Something went wrong</Text>
         ) : (
           <FlatList
             data={data}
             renderItem={({ item }) => <PopularJobCard item={item} />}
-            keyExtractor={(item) => item?.job_id}
+            keyExtractor={(item) => item.job_id}
             contentContainerStyle={{ columnGap: SIZES.medium }}
             horizontal
           />
