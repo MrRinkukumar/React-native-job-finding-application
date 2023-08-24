@@ -27,7 +27,11 @@ const JobDetails = () => {
   //   console.log(id);
   const router = useRouter();
   const [refreshing, setRefreshing] = useState(false);
-  const onRefresh = () => {};
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    reFetch();
+    setRefreshing(false);
+  });
   const { data, isloading, error, reFetch } = useFetch("job-details", {
     job_id: params.id,
   });
